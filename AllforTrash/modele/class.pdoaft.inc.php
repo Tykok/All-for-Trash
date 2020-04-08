@@ -1,63 +1,34 @@
 <?php
 
-/**
- * Classe d'accès aux données. 
+class Connexion_aft
+{
 
- * Utilise les services de la classe PDO
- * pour l'application AllforTrash
- * Les attributs sont tous statiques,
- * les 4 premiers pour la connexion
- * $monPdo de type PDO 
- * $monPdoaft qui contiendra l'unique instance de la classe
+    private $connexion;
 
- * @package default
- * @author Cheri Bibi
- * @version    1.0
- * @link       http://www.php.net/manual/fr/book.pdo.php
- */
-class PdoAft {
-
-    private static $serveur = 'mysql:host=localhost';
-    private static $bdd = 'dbname=allfortrash';
-    private static $user = 'root';
-    private static $mdp = '';
-    private static $monPdo;
-    private static $monPdoAft = null;
 
     /**
-     * Constructeur privé, crée l'instance de PDO qui sera sollicitée
-     * pour toutes les méthodes de la classe
+     * Constructeurs, (méthodes magiques)
      */
-    private function __construct() {
-        PdoAft::$monPdo = new PDO(PdoAft::$serveur . ';' . PdoAft::$bdd, PdoAft::$user, PdoAft::$mdp);
-        PdoAft::$monPdo->query("SET CHARACTER SET utf8");
-    }
+    public  function __construct()
+    {
+        $serveur = 'localhost';
+        $bdd = 'allfortrash';
+        $user = 'root';
+        $mdp = '';
 
-    public function __destruct() {
-        PdoAft::$monPdo = null;
-    }
-
-    /**
-     * Fonction statique qui crée l'unique instance de la classe
-
-     * Appel : $instancePdoAft = PdoAft::getPdoAft();
-
-     * @return l'unique objet de la classe PdoAft
-     */
-    public static function getPdoAft() {
-        if (PdoAft::$monPdoAft == null) {
-            PdoAft::$monPdoAft = new PdoAft();
+        try {
+            // Teste pour se co à la BDD 
+            $this->connexion = new PDO("mysql:host=$serveur;dbname=$bdd;charset=utf8", $user, $mdp, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        } catch (Exception $e) {
+            // Sinon, affiche un message d'erreur
+            throw new Exception("Aucun accès à la Base De Données");
         }
-        return PdoAft::$monPdoAft;
     }
 
-    public function getToutLesUser() {
-        $req = "select * from user_log";
-        $res = PdoAft::$monPdo->query($req);
-        $lesUsers = $res->fetchAll();
-        return $lesUsers;
+
+    // Retourne l'instance de la connexion pour permettre d'effectuer différentes requêtes
+    public function get_conexion()
+    {
+        return $this->connexion;
     }
-
-   
-
 }
