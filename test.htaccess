@@ -1,0 +1,14 @@
+//Custom 400 errors
+ErrorDocument 400 /other/error.php?error=400
+
+//Custom 401 errors
+ErrorDocument 401 /other/error.php?error=401
+
+//Custom 403 errors
+ErrorDocument 403 /other/error.php?error=403
+
+//Custom 404 errors
+ErrorDocument 404 /other/error.php?error=404
+
+//Custom 500 errors
+ErrorDocument 500 /other/error.php?error=500
