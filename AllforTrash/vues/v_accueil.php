@@ -7,12 +7,20 @@
 </head>
 <body>
    <p> TEST </p>
+<?php
+
+    foreach ($lesUsers as $unUsers){
+        echo $unUsers['id_user'];
+        echo $unUsers['nom'];
+    }
+
+    
 
 
 
 
 
 
-</body>
-</html>
+
+
 

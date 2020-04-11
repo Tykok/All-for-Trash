@@ -31,4 +31,12 @@ class Connexion_aft
     {
         return $this->connexion;
     }
+
+    public function getToutLesUser() {
+        $req = "select * from user_log";
+        $res = $this->connexion->query($req);
+        $lesUsers = $res->fetchAll();
+        return $lesUsers;
+    }
+
 }
