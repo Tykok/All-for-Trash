@@ -45,7 +45,21 @@ class Connexion {
 	 * @param  $ 
 	 */
 
-	protected final  function __construct($name, $adr, $user, $mdp, $) {
+	protected final  function __construct() {
+
+			$serveur = 'localhost';
+			$bdd = 'allfortrash';
+			$user = 'root';
+			$mdp = '';
+	
+			try {
+				// Teste pour se co à la BDD 
+				$this->connexion = new PDO("mysql:host=$serveur;dbname=$bdd;charset=utf8", $user, $mdp, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+			} catch (Exception $e) {
+				// Sinon, affiche un message d'erreur
+				throw new Exception("Aucun accès à la Base De Données");
+			}
+		
 
 	}
 
