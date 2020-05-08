@@ -10,6 +10,14 @@
     </div>
 </header>
 
+<br /> <br />
+
+<div class="row center">
+    <h4>
+        Présentation clair du site (bouton en savoir plus)
+    </h4>
+</div>
+
 <div class='row center'>
     <h3>Dépôts effectués ce mois-ci</h3>
 </div>
