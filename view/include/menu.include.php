@@ -1,11 +1,11 @@
 <!-- BARRE DE NAVIGUATION ECRAN ORDINATEUR -->
 <nav>
     <div class="navbar-fixed grey darken-3">
-        <a href="index.php" class="brand-logo">
-            <img class="responsive-img" src='<?php echo img . "trash-logo.jpg"; ?>' width="285" >
+        <a href="index.php" class="brand-logo right">
+            <img class="responsive-img" src='<?php echo img . "principaL/trash-logo.jpg"; ?>' width="285" >
         </a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
+        <ul class="left hide-on-med-and-down">
 
             <li><a href="?" class="toast-basic">Acceuil</a></li>
 

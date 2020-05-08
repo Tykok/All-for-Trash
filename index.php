@@ -14,16 +14,26 @@ const modal = 'view/modal/modal.';
 <head>
 
     <title> All for trash </title>
+    <link rel="shortcut icon" href='<?php echo img . "principaL/title_icone.ico"; ?>'>
 
     <!-- pour les icones de maerialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!--Jquery n"cessaire pour certains effets -->
+    <!--Jquery nécessaire pour certains effets -->
     <script type="text/javascript" src='<?php echo js; ?>jquery-3.2.1.min.js'></script>
 
     <!-- Bibliothéques materialize nécessaire aux styles et effets des différents composants webs -->
     <link rel="stylesheet" href="<?php echo css; ?>materialize.min.css">
     <script src="<?php echo js; ?>materialize.min.js"></script>
+
+
+    <!-- Open Street Map -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+
+
+    <!-- W3CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 
@@ -50,7 +60,7 @@ const modal = 'view/modal/modal.';
     }
 
 
-
+    require_once(include_component . 'footer.include.php')
     ?>
 </body>
 
