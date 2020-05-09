@@ -47,6 +47,32 @@ class Connexion_select extends Connexion
     }
 
 
+    /**
+     * Cette fonction permet de selectionner le userLog avec l'id correspondant
+     *
+     * @param int $idUser
+     * @return void
+     */
+    public function getTheUserLog($idUser)
+    {
+        $req = "select * 
+        from user_log L INNER JOIN user U
+        ON L.id_user = U.id_user
+        where L.id_user = :theId;";
+
+        $res = $this->connexion->prepare($req); // prépapre la requête
+        $res->execute(array('theId' => $idUser)); // On exécute notre requête 
+        $theUser = $res->fetch(); // on récupére la ligne
+        return $theUser;
+    }
+
+
+
+    /**
+     * Cette fonction récupére l'ensemble des dépôts signaler ce mois-ci
+     *
+     * @return void
+     */
     public function get_depotOfMonth()
     {
         // Requête = Récupére l'ensemble des dépôts signaler (reported_at) ce mois-ci
@@ -55,6 +81,36 @@ class Connexion_select extends Connexion
     WHERE MONTH(reported_at) = MONTH(CURRENT_DATE)";
         $res = $this->connexion->query($req);
         $lesUsers = $res->fetchAll();
+        return $lesUsers;
+    }
+
+
+
+    /**
+     * Retourne les identifiants des  users les plus actifs ce mois-ci 
+     * dans un tableau clé valeur (clé = id_user, value = nbSignalement)
+     *
+     * @param boolean $limit permet de spécifier si on ne veut que les 3 premiers ou l'ensemble des users
+     * @return void
+     */
+    public function get_UsersTopOfMonth($limit = true)
+    {
+        $req = "SELECT COUNT(*) as nbSignal, id_user 
+        FROM depot D 
+        WHERE MONTH(reported_at) = MONTH(CURRENT_DATE)
+        GROUP BY id_user 
+        ORDER BY nbSignal DESC";
+
+        // Si on ne souhaite qu'avoir les 3 premiers users ou le classement du mois
+        if ($limit) {
+            $req .= " LIMIT 0,3;";
+        } else {
+            $req .= ";";
+        }
+
+        $res = $this->connexion->query($req);
+        $lesUsers = $res->fetchAll();
+
         return $lesUsers;
     }
 }

@@ -15,9 +15,14 @@ Chacune des fonction prennent en entrée le résultat d'une requête pour ensuit
  * @param boolean $chargerTout Si l'on souhaite charger l'ensemble des collection de l'objet Dépôt ou non
  * @return void
  */
-function createCollectionDepot($resultReq, $chargerTout = false)
+function createCollectionDepot($chargerTout = false)
 {
-    $collectionDepot = array();
+
+    // on instancie notre objet SELECT
+    $select = new Connexion_select;
+    $resultReq = $select->get_depotOfMonth(); // On récupére les dépôts du mois
+
+    $collectionDepot = new ArrayObject;
 
     foreach ($resultReq as $uneLigne) {
 
@@ -33,7 +38,19 @@ function createCollectionDepot($resultReq, $chargerTout = false)
             $chargerTout
         );
 
-        array_push($collectionDepot, $unDepot); // On ajoute notre objet à l'array
+        $collectionDepot->append($unDepot); // On ajoute notre objet à l'array
     }
     return $collectionDepot; // Retourne l'ArrayObject Structurer
+}
+
+
+
+/**
+ * Cette fonction permet de créer une collection des users
+ *
+ * @return void
+ */
+function createCollectionUser()
+{
+
 }

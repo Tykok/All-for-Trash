@@ -1,5 +1,8 @@
 <?php
 
+require_once(model . 'createObject.php'); // on récupére notre modèle qui ce charge de créer les différentes colelctions d'objets
+require_once(model . 'principal.php'); // Modèle qui permet de récupérer les différents 'Top 3' du mois et d'en faire des collections
+
 // Notre menu
 require_once(include_component . 'menu.include.php');
 
@@ -16,11 +19,14 @@ if (!isset($_COOKIE['user'])) {
 /**
  * PARTIE CONCERNANT LA CARTE DE LA VIEWPRINCIPAL
  */
-// Instance pour les requêtes SELECT
-$select = new Connexion_select;
-$month_depot = $select->get_depotOfMonth(); // On récupére les dépôts du mois
-require_once(model . 'createObject.php'); // on récupére notre modèle
-$month_depot = createCollectionDepot($month_depot); // On récpére la collection des dépôts de manière structurer
+// On récupére la collection des dépôts de manière structurer
+$month_depot = createCollectionDepot();
+
+
+/**
+ * PARTIE CONCERNANT LE TOP 3 DES USERS
+ */
+$topUser = createTop3Users(); // On récupére nos 3 utilisateurs du mois
 
 
 

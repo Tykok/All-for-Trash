@@ -60,7 +60,13 @@ class User_log extends User
 	 */
 	private  $collection_grade;
 
-	
+	/**
+	 * Collection des connexions de l'utilisateur
+	 *
+	 * @var array
+	 */
+	private $collection_connexion;
+
 	/**
 	 * Simple constructeur de notre classe dérivé user log
 	 *
@@ -68,24 +74,40 @@ class User_log extends User
 	 * @param boolean $charge_connexion
 	 * @param boolean $charge_grade
 	 */
-	public function __construct($id_user, $charge_connexion = false, $charge_grade = false)
-	{
+	public function __construct(
+		$id_user,
+		$save_action,
+		$photo,
+		$nom,
+		$prenom,
+		$email,
+		$adresse,
+		$tel,
+		$charge_connexion = false,
+		$charge_grade = false
+	) {
 
-		// REQ SQL POUR RECUPERE
-		// APPEL DU CONSTRUCTEUR POUR CREATION OBJET
-		// AJOUT A CHACUN DES ATTRIBUTS LEURS VALEURS 
+		User::__construct($id_user, $save_action);
+		$this->photo = $photo;
+		$this->nom = $nom;
+		$this->prenom = $prenom;
+		$this->email = $email;
+		$this->adresse = $adresse;
+		$this->tel = $tel;
 
-		$photo = null;
-		$nom = null;
-		$prenom = null;
-		$email = null;
-		$adresse = null;
-		$tel = null;
 
+		// Sion souhaite charger les grades de l'user
 		if ($charge_grade) {
-			$collection_grade = null;
+			$this->collection_grade = null;
 		} else {
-			$collection_grade = array();
+			$this->collection_grade = array();
+		}
+
+		// Si on souhaite charger les connexions de l'utilisateur
+		if ($charge_connexion) {
+			$this->collection_connexion = null;
+		} else {
+			$this->collection_connexion = array();
 		}
 	}
 

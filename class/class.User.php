@@ -23,12 +23,6 @@ class User
 	 */
 	private  $save_action;
 
-	/**
-	 * Collection des différentes actions de l'utilisateur
-	 * @var Connexion_User
-	 * @access private
-	 */
-	private  $Collection_LesConnexion;
 
 
 	/**
@@ -38,16 +32,10 @@ class User
 	 * @param boolean $save_action
 	 * @param boolean $charge_All_Connexion
 	 */
-	public function __construct($id_user, $save_action,	$charge_All_Connexion = false)
+	public function __construct($id_user, $save_action)
 	{
 		$id_user = $id_user;
 		$save_action = $save_action;
-
-		if ($charge_All_Connexion) {
-			$Collection_LesConnexion = null;
-		} else {
-			$Collection_LesConnexion = array();
-		}
 	}
 
 
