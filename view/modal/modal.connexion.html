@@ -1,0 +1,57 @@
+<!-- Modal permettant d'effectuer la connexion-->
+<div id="modal_connexion" class="modal">
+    <div class="modal-content center">
+        <h4>Connexion</h4>
+
+
+
+        <div class="row center">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="login" type="text" class="validate">
+                    <label for="login">Pseudo</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Mot de passe</label>
+                </div>
+            </div>
+
+            <div class="row center">
+                <!-- Connexion en Ajax pour plus de style ;) Ferais plus tard -->
+                <a class="waves-effect waves-light btn-flat  teal lighten-3">Connexion<i class="large right material-icons">check_circle</i></a>
+            </div>
+        </div>
+
+        <!--
+
+DEROULEMENT DE LA CONNEXION :
+
+Etape 1 -> Clique sur connexion -> Appel JS -> Post PHP puis réponse PHP
+Etape 2 -> SI connexion approuvé ALORS
+Rechargement du menu pour afficher le compte utilsiateur
+SINON
+Toast pour dire mauvais mot de passe
+
+Création de comtpe :
+Simple redirection vers un form de création
+
+-->
+
+
+
+
+    </div>
+    <div class="modal-footer center">
+        <a class="waves-effect waves-light btn-flat">Créer un compte<i class="large right material-icons">create</i></a>
+    </div>
+</div>
+
+<script>
+    // Script d'instance pour ouvrir ensuite le modali
+    $(document).ready(function() {
+        $('#modal_connexion').modal();
+    });
+</script>

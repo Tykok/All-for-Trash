@@ -1,18 +1,16 @@
 <!-- Modal de bienvenue au nouveau utilisateur-->
 <div id="modal_bienvenue" class="modal">
-    <div class="modal-content">
-        <center>
-            <h4>Bienvenue à toi!!!</h4>
-            <p>Bienvenue sur notre site All for trash</p>
+    <div class="modal-content center">
+        <h4>Bienvenue à toi!!!</h4>
+        <p>Bienvenue sur notre site All for trash</p>
 
-            <br/>
-            <p>
-                N'hésite pas à faire un tour sur notre site et découvrir les différentes fonctionnalités ;)
-            </p>
-            <p>
-                Clique sur le bouton ci-dessous si tu souhaite en savoir plus sur les intérêts de ce site
-            </p>
-        </center>
+        <br/>
+        <p>
+            N'hésite pas à faire un tour sur notre site et découvrir les différentes fonctionnalités ;)
+        </p>
+        <p>
+            Clique sur le bouton ci-dessous si tu souhaite en savoir plus sur les intérêts de ce site
+        </p>
     </div>
     <div class="modal-footer">
         <a href="?page=detail" class="modal-close waves-effect waves-green btn-flat">Détails du site</a>
@@ -22,7 +20,7 @@
 <script>
     // Script d'instance pour ouvrir ensuite le modali
     $(document).ready(function() {
-        $('.modal').modal();
-        $('.modal').modal('open');
+        $('#modal_bienvenue').modal();
+        $('#modal_bienvenue').modal('open');
     });
 </script>
