@@ -136,6 +136,22 @@ class Connexion_select extends Connexion
 
 
 
+    /**
+     * Permet de savoir combien d'utilisateurs ont été enregistrer sur ce site web
+     *
+     * @return void
+     */
+    public function get_countUser()
+    {
+        $req = "SELECT COUNT(*) as nbUser 
+        FROM user";
+
+        $res = $this->connexion->query($req);
+        $count = $res->fetch();
+
+        return $count;
+    }
+
 
 
     /**

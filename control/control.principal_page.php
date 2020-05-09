@@ -36,6 +36,10 @@ $topTrash = createTop3Trash();
 $topUser = createTop3Users(); // On récupére nos 3 utilisateurs du mois
 
 
+/**
+ * PARTIE RELATIVE AU SITE WEB
+ */
+$nbUser = theNbUser();
 
 // Appel de notre vue
 require_once(view . 'principal.php');

@@ -186,12 +186,16 @@
             <div class="card-content">
                 <span class="card-title center">Informations relatives aux site</span>
 
-                <div class="row">
+                <br /> <br />
+
+                <div class="row center">
                     <div class="col s6">
-                        Nombre d'utilisateurs :
+                        Nombre d'utilisateurs <br />
+                        <h1><b><?php echo $nbUser; ?></b></h1>
                     </div>
                     <div class="col s6">
-                        Nombre de connexions :
+                        Nombre de connexions
+                        <h1><b><?php echo '?'; ?></b></h1>
                     </div>
                 </div>
             </div>

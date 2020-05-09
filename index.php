@@ -17,7 +17,7 @@ const classF = 'class/class.';
     <title> All for trash </title>
     <link rel="shortcut icon" href='<?php echo img . "principaL/title_icone.ico"; ?>'>
 
-    <!-- pour les icones de maerialize -->
+    <!-- pour les icones de materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--Jquery nécessaire pour certains effets -->

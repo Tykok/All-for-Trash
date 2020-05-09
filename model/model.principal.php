@@ -71,3 +71,17 @@ function createTop3Trash()
     }
     return $theTop; // Retourne l'ArrayObject Structurer
 }
+
+
+/**
+ * Retourne tout simplement le nombre d'utilisateurs du site
+ *
+ * @return void
+ */
+function theNbUser()
+{
+    $select = new Connexion_select;
+    $nbUser = $select->get_countUser();
+
+    return $nbUser['nbUser'];
+}
