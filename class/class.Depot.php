@@ -123,30 +123,30 @@ class Depot
 	) {
 
 		// On récupére déjà les informations de bases de notre dépôt
-		$id_signalement = $id_signalement;
-		$name = $name;
-		$longitude = $longitude;
-		$latitude = $latitude;
-		$description = $description;
-		$reported_at = $reported_at;
-		$nettoyer = $nettoyer;
+		$this->id_signalement = $id_signalement;
+		$this->name = $name;
+		$this->longitude = $longitude;
+		$this->latitude = $latitude;
+		$this->description = $description;
+		$this->reported_at = $reported_at;
+		$this->nettoyer = $nettoyer;
 
 		// On récupére tout d'abord le USER
-		$leUser = null;
+		$this->leUser = null;
 
 		// Puis ensuite le LIEU en relation 
-		$leLieu = null;
+		$this->leLieu = null;
 
 
 		// Ensuite si l'ensemble des informations doit être chargé, alors on charge les collections du dépôt
 		if ($charger_tout) {
-			$collection_Trash = null;
-			$Collection_Commentaires = null;
-			$Dictionnaire_User_Approuved = null;
+			$this->collection_Trash = null;
+			$this->Collection_Commentaires = null;
+			$this->Dictionnaire_User_Approuved = null;
 		} else {
-			$collection_Trash = array();
-			$Collection_Commentaires = array();
-			$Dictionnaire_User_Approuved = array();
+			$this->collection_Trash = array();
+			$this->Collection_Commentaires = array();
+			$this->Dictionnaire_User_Approuved = array();
 		}
 	}
 

@@ -45,7 +45,7 @@ class Connexion {
 	 * @param  $ 
 	 */
 
-	protected final  function __construct() {
+	protected  function __construct() {
 
 			$serveur = 'localhost';
 			$bdd = 'allfortrash';

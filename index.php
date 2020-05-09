@@ -2,12 +2,13 @@
 // Ici les constantes vers les différents dossiers principal, pour ne pas retaper les chemins à chaque fois
 const control = 'control/control.';
 const view = 'view/view.';
-const model = 'model/';
+const model = 'model/model.';
 const include_component = 'view/include/';
 const img = 'lib/img/';
 const js = 'lib/js/';
 const css = 'lib/css/';
 const modal = 'view/modal/modal.';
+const classF = 'class/class.';
 ?>
 <html>
 
@@ -40,6 +41,7 @@ const modal = 'view/modal/modal.';
 <body>
 
     <?php
+    require_once(classF . 'include.php'); // On include nos classes dans le bonne ordre
     // Ici on vérifie tout simplement si un pamramètres est présent ou non
     if (isset($_GET['page'])) {
         $page = $_GET['page'];

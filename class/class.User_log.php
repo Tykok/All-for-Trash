@@ -7,7 +7,6 @@ Un utilisateur peut avoir PLUSIEURS grades par ailleur
  * written by KDO kdo@zpmag.com
  * @see        User
  */
-require_once('User.class.php');
 
 class User_log extends User
 {

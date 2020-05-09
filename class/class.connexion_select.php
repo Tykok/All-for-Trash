@@ -32,9 +32,27 @@ class Connexion_select extends Connexion
         return $this->connexion;
     }
 
-    public function getToutLesUser()
+
+    /**
+     * Simple fonction qui retourne l'ensemble des utilisateurs qui ce sont créer un compte 
+     *
+     * @return void
+     */
+    public function getToutLesUserLog()
     {
         $req = "select * from user_log";
+        $res = $this->connexion->query($req);
+        $lesUsers = $res->fetchAll();
+        return $lesUsers;
+    }
+
+
+    public function get_depotOfMonth()
+    {
+        // Requête = Récupére l'ensemble des dépôts signaler (reported_at) ce mois-ci
+        $req = "SELECT *
+    FROM depot
+    WHERE MONTH(reported_at) = MONTH(CURRENT_DATE)";
         $res = $this->connexion->query($req);
         $lesUsers = $res->fetchAll();
         return $lesUsers;

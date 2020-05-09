@@ -14,17 +14,30 @@
 
 <div class="row center">
     <h4>
-        Présentation clair du site (bouton en savoir plus)
+        <p>
+            All for Trash est une application de Tracking des déchets sauvage.
+        </p>
+        <p>
+            Comme Waze permettant de signaler un embouteillage ou un accident, All for Trash permet le signalement des dépôts de déchets.
+        </p>
     </h4>
 </div>
 
-<div class='row center'>
-    <h3>Dépôts effectués ce mois-ci</h3>
-</div>
-<!-- MAP OPEN STREET -->
-<div class="row">
-    <div class="col m10 s12 offset-m1">
-        <div id="mapid" style="height: 100%;"></div>
+<br /> <br />
+
+<div class="row center">
+    <div class="col s12">
+        <div class="card grey lighten-3">
+            <div class="card-content">
+                <span class="card-title center">Dépôts effectués ce mois-ci</span>
+                <br />
+                <div class="row">
+                    <div class="col m10 s12 offset-m1">
+                        <div id="mapid" style="height: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -115,15 +128,20 @@
     // SCRIPT DE GENERATION OPEN STREET MAP
 
 
-    // Position sur la carte
+    // Position sur la carte (Mettre la Réunion en gros)
     var mymap = L.map('mapid').setView([-21.15, 55.5], 11);
 
 
-    // Marqueur sur la carte
-    var marker = L.marker([-20.8954796, 55.4479147, 17]).addTo(mymap);
-    // Pour la pop-up sur la carte
-    marker.bindPopup("Petit Test");
-
+    <?php // parcourt de la collection pour placer les différents marqueurs
+    foreach ($month_depot as $unDepot) {
+    ?>
+        // Marqueur sur la carte
+        var marker = L.marker([<?php echo $unDepot->get_longitude() . ',' . $unDepot->get_latitude(); ?>]).addTo(mymap);
+        // Pour la pop-up sur la carte
+        marker.bindPopup("<?php echo $unDepot->get_name(); ?>");
+    <?php
+    }
+    ?>
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 25,
         id: 'mapbox/streets-v11'

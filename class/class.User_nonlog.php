@@ -6,7 +6,6 @@
  * written by KDO kdo@zpmag.com
  * @see        User
  */
-require_once('User.class.php');
 
 class User_nonlog extends User
 {
