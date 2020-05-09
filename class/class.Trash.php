@@ -72,13 +72,13 @@ class Trash
 	 */
 	public function __construct($id_trash, $name, $photo, $description, $origin, $kind, $created_at)
 	{
-		$id_trash = $id_trash;
-		$name = $name;
-		$photo = $photo;
-		$description = $description;
-		$origin = $origin;
-		$kind = $kind;
-		$created_at = $created_at;
+		$this->id_trash = $id_trash;
+		$this->name = $name;
+		$this->photo = $photo;
+		$this->description = $description;
+		$this->origin = $origin;
+		$this->kind = $kind;
+		$this->created_at = $created_at;
 	}
 
 

@@ -23,6 +23,13 @@ if (!isset($_COOKIE['user'])) {
 $month_depot = createCollectionDepot();
 
 
+
+/**
+ * PARTIE SUR LE TOP 3 DES DECHETS LES PLUS SIGNALER DU MOIS
+ */
+$topTrash = createTop3Trash();
+
+
 /**
  * PARTIE CONCERNANT LE TOP 3 DES USERS
  */

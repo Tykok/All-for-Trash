@@ -69,6 +69,26 @@ class Connexion_select extends Connexion
 
 
     /**
+     * Permet de récupérer le trash correspondant à l'id trash
+     *
+     * @param int $idTrash
+     * @return void
+     */
+    public function getTheTrash($idTrash)
+    {
+        $req = "select * 
+        from trash
+        where id_trash = :theId;";
+
+        $res = $this->connexion->prepare($req); // prépapre la requête
+        $res->execute(array('theId' => $idTrash)); // On exécute notre requête 
+        $theTrash = $res->fetch(); // on récupére la ligne
+        return $theTrash;
+    }
+
+
+
+    /**
      * Cette fonction récupére l'ensemble des dépôts signaler ce mois-ci
      *
      * @return void
@@ -112,5 +132,35 @@ class Connexion_select extends Connexion
         $lesUsers = $res->fetchAll();
 
         return $lesUsers;
+    }
+
+
+
+
+
+    /**
+     * Cette fonction permet de retourner le classement des déchets les plus signalés 
+     *
+     * @param boolean $limit permet de spécifier à la requête qu'on ne veux QUE les 3 premiers ou l'ENSEMBLE du classement
+     * @return void
+     */
+    public function get_TrashTopOfMonth($limit = true)
+    {
+        $req = "select count(*) as nbTrash, trash_id
+         from depot_trash 
+         group by trash_id 
+         order by nbTrash DESC";
+
+        // Si on ne souhaite qu'avoir les 3 premiers users ou le classement du mois
+        if ($limit) {
+            $req .= " LIMIT 0,3;";
+        } else {
+            $req .= ";";
+        }
+
+        $res = $this->connexion->query($req);
+        $lesTrash = $res->fetchAll();
+
+        return $lesTrash;
     }
 }

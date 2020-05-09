@@ -52,15 +52,56 @@
             <div class="card-content">
                 <span class="card-title center">Top 3 des déchets du mois</span>
 
-                <div class="row">
+                <br /> <br />
+
+                <div class="row center">
                     <div class="col s4">
-                        Podium 2
+                        <h3>2<sup>ème</sup></h3>
+                        <br />
+                        <?php
+                        if (isset($topTrash[1])) {
+                            $trash = $topTrash[1];
+                            echo "<img class='responsive-img' src='" . img . 'trash/' . $trash[1]->get_photo() . "' alt='Deuxième déchet du mois'>";
+                            echo "<br/><br/>";
+                            echo $trash[0] . ' signalements ce mois-ci';
+                        } else {
+                            echo '<img class="responsive-img" src="' . img . 'principal/trash-logo.jpg" width="285" >';
+                            echo "<br/><br/>";
+                            echo 'Aucun déchet concerné';
+                        }
+                        ?>
                     </div>
                     <div class="col s4">
-                        Podium 1
+                        <h3>1<sup>er</sup></h3>
+                        <br />
+                        <?php
+                        if (isset($topTrash[0])) {
+                            $trash = $topTrash[0];
+                            echo "<img class='responsive-img' src='" . img . 'trash/' . $trash[1]->get_photo() . "' alt='Premier déchet du mois'>";
+                            echo "<br/><br/>";
+                            echo $trash[0] . ' signalements ce mois-ci';
+                        } else {
+                            echo '<img class="responsive-img" src="' . img . 'principal/trash-logo.jpg" width="285" >';
+                            echo "<br/><br/>";
+                            echo 'Aucun déchet concerné';
+                        }
+                        ?>
                     </div>
                     <div class="col s4">
-                        Podium 3
+                        <h3>3<sup>ème</sup></h3>
+                        <br />
+                        <?php
+                        if (isset($topTrash[2])) {
+                            $trash = $topTrash[2];
+                            echo "<img class='responsive-img' src='" . img . 'trash/' . $trash[1]->get_photo() . "' alt='Troisième déchet du mois'>";
+                            echo "<br/><br/>";
+                            echo $trash[0] . ' signalements ce mois-ci';
+                        } else {
+                            echo '<img class="responsive-img" src="' . img . 'principal/trash-logo.jpg" width="285" >';
+                            echo "<br/><br/>";
+                            echo 'Aucun déchet concerné';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -88,7 +129,7 @@
                         <?php
                         if (isset($topUser[1])) {
                             $user = $topUser[1];
-                            echo "<img class='responsive-img' src='" . $user[1]->get_photo() . "' alt='Deuxième utilisateur du mois'>";
+                            echo "<img class='responsive-img' src='" . img . 'profil_pic/' . $user[1]->get_photo() . "' alt='Deuxième utilisateur du mois'>";
                             echo "<br/><br/>";
                             echo $user[0] . ' signalements ce mois-ci';
                         } else {
@@ -104,7 +145,7 @@
                         <?php
                         if (isset($topUser[0])) {
                             $user = $topUser[0];
-                            echo "<img class='responsive-img' src='" . $user[1]->get_photo() . "' alt='Premier utilisateur du mois'>";
+                            echo "<img class='responsive-img' src='" . img . 'profil_pic/' . $user[1]->get_photo() . "' alt='Premier utilisateur du mois'>";
                             echo "<br/><br/>";
                             echo $user[0] . ' signalements ce mois-ci';
                         } else {
@@ -120,7 +161,7 @@
                         <?php
                         if (isset($topUser[2])) {
                             $user = $topUser[2];
-                            echo "<img class='responsive-img' src='" . $user[1]->get_photo() . "' alt='Troisième utilisateur du mois'>";
+                            echo "<img class='responsive-img' src='" . img . 'profil_pic/' . $user[1]->get_photo() . "' alt='Troisième utilisateur du mois'>";
                             echo "<br/><br/>";
                             echo $user[0] . ' signalements ce mois-ci';
                         } else {
