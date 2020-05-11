@@ -23,7 +23,7 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
             $result['tel']
         );
 
-        // On serialize et on récupére notre objet
+        // On serialize et on récupére notre objet dans une SESSION
         $_SESSION['user_info'] = serialize($user);
 
         // On recharge notre menu

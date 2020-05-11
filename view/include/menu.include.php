@@ -63,7 +63,7 @@
     <?php
     if (isset($_SESSION['user_info'])) {
     ?>
-        <li><a href="#modal_connexion" class="modal-trigger toast-basic">
+        <li><a href="?page=deco" class="modal-trigger toast-basic">
                 <i id="the_account" class="material-icons">power_settings_new</i>Déconnexion</a>
         </li>
     <?php

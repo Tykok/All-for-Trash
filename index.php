@@ -1,5 +1,9 @@
 <?php
+
+// On démarre les SESSION pour les utilisation futures
 session_start();
+
+
 // Ici les constantes vers les différents dossiers principal, pour ne pas retaper les chemins à chaque fois
 const control = 'control/control.';
 const view = 'view/view.';
@@ -58,6 +62,12 @@ const classF = 'class/class.';
         case 'detail':
             require_once(view . 'detail.php');
             break;
+
+        case 'deco':
+            unset($_SESSION['user_info']); // on détruit notre SESSION
+            header('Location: ?'); // On le redirige vers la page d'acceuil
+            break;
+
         default:
             require_once(control . 'principal_page.php');
             break;
