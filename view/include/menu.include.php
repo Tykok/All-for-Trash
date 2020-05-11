@@ -4,12 +4,12 @@
 
         <!-- Test qui permet d'afficher ou non le logo de connexion -->
         <?php
-        if (isset($_SESSION['info_user'])) {
-            $user = unserialize($_SESSION['info_user']);
+        if (isset($_SESSION['user_info'])) {
+            $user = unserialize($_SESSION['user_info']);
         ?>
             <a class="modal-trigger brand-logo right" id='the_account'>
                 <div class='right'>
-                    <?php echo $user->get_nom . ' ' . $user->get_prenom(); ?>
+                    <?php echo $user->get_nom() . ' ' . $user->get_prenom(); ?>
                 </div>
                 <img src="<?php echo img . 'profil_pic/' . $user->get_photo(); ?>" alt="Avatar" class=" right w3-circle responsive-img" width="9%">
             </a>
@@ -50,7 +50,7 @@
     Test de l'afichage du bouton CONNEXION ou DECONNEXION 
     -->
     <?php
-    if (!isset($_SESSION['info_user'])) {
+    if (!isset($_SESSION['user_info'])) {
     ?>
         <li><a href="#modal_connexion" class="modal-trigger toast-basic">
                 <i id="the_account" class="material-icons">account_box</i>Connexion</a>
@@ -61,7 +61,7 @@
 
 
     <?php
-    if (isset($_SESSION['info_user'])) {
+    if (isset($_SESSION['user_info'])) {
     ?>
         <li><a href="#modal_connexion" class="modal-trigger toast-basic">
                 <i id="the_account" class="material-icons">power_settings_new</i>Déconnexion</a>

@@ -10,6 +10,7 @@ const js = 'lib/js/';
 const css = 'lib/css/';
 const modal = 'view/modal/modal.';
 const classF = 'class/class.';
+
 ?>
 <html>
 

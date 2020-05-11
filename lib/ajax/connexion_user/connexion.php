@@ -9,8 +9,7 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
 
     if ($conn->verif_IdentifiantUser($_POST['pseudo'], $_POST['password'])) {
 
-        // Création de la Session
-        session_start();
+
 
         $result = $conn->get_InfoUser($_POST['pseudo'], $_POST['password']);
         $user = new User_log(
