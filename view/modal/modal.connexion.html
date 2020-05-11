@@ -21,7 +21,7 @@
 
             <div class="row center">
                 <!-- Connexion en Ajax pour plus de style ;) Ferais plus tard -->
-                <a class="waves-effect waves-light btn-flat  teal lighten-3">Connexion<i class="large right material-icons">check_circle</i></a>
+                <a class="waves-effect waves-light btn-flat  teal lighten-3" id='submit'>Connexion<i class="large right material-icons">check_circle</i></a>
             </div>
         </div>
 
@@ -52,6 +52,44 @@ Simple redirection vers un form de création
 <script>
     // Script d'instance pour ouvrir ensuite le modali
     $(document).ready(function() {
+
+        // instance pour le modal
         $('#modal_connexion').modal();
+
+
+        // lors du clic sur SUBMIT
+        $("#submit").click(function(e) {
+            e.preventDefault();
+
+            $.post(
+                'lib/ajax/connexion_user/connexion.php', // Envoi à ce script PHP
+                {
+                    pseudo: $("#login").val(), // Récupération de la valeur des input
+                    password: $("#password").val(),
+                },
+
+                function(data) {
+                    console.log(data);
+                    if (data != 'Wrong ;)') {
+                        // Si la connexion est approuvé on recharge notre menu qui sera personnalisé avec le compte de l'utilisateur
+                        $('#modal_connexion').modal('close');
+                        M.toast({
+                            html: 'Vous êtes connecté'
+                        })
+                        setTimeout(function() {
+                            $('#the_account').html(data);
+                        }, 2000);
+
+                    } else {
+                        M.toast({
+                            html: 'Mauvais identifiant'
+                        })
+                    }
+                },
+                'html'
+            );
+        });
+
+
     });
 </script>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Ici les constantes vers les différents dossiers principal, pour ne pas retaper les chemins à chaque fois
 const control = 'control/control.';
 const view = 'view/view.';

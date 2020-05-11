@@ -179,4 +179,72 @@ class Connexion_select extends Connexion
 
         return $lesTrash;
     }
+
+
+
+
+
+    /**
+     * Cette fonction permet de renvoyer VRAI ou FAUX si l'utilisateur entre des bons ou mauvais identifiants
+     *
+     * @param string $login
+     * @param string $mdp
+     * @return void
+     */
+    public function verif_IdentifiantUser($login, $mdp)
+    {
+        $login = sha1($login);
+        $mdp = sha1($mdp);
+
+        $req = "SELECT * 
+        FROM user_log"; // récupére les lignes
+
+        $rs = $this->connexion->query($req); // Connexion à la base de données
+        $ligne = $rs->fetchAll(); // Récupération des lignes
+
+        $acces = false;
+
+        // On parcourt chaque identifiant pour les tester
+        foreach ($ligne as $uneligne) {
+
+            if ($uneligne['login'] == $login && $uneligne['mdp'] == $mdp) {
+                $acces = true; // variable à true
+                break; // On sort donc de la boucle
+            }
+        }
+
+        return $acces; // Retourne vrai ou faux
+    }
+
+
+    /**
+     * Cette fonction permet de retourner les informations relatives à l'user qui vient d'envoyer
+     * ses identifiants
+     *
+     * @param string $login
+     * @param string $mdp
+     * @return void
+     */
+    public function get_InfoUser($login, $mdp)
+    {
+
+        // On hash les identifiants envoyés 
+        $login = sha1($login);
+        $mdp = sha1($mdp);
+
+        // On récupére la ligne correspondante
+        $req = "SELECT * 
+        FROM user_log INNER JOIN user
+        ON user_log.id_user = user.id_user
+        WHERE login = :the_login
+        AND mdp = :this_mdp;";
+
+        // Préparation de la requête
+        $rs = $this->connexion->prepare($req);
+        // Exécution de notre requête
+        $rs->execute(array('the_login' => $login, 'this_mdp' => $mdp));
+
+        return $rs->fetch(); // Récupération la ligne et return
+
+    }
 }

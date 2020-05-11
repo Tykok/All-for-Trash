@@ -1,9 +1,28 @@
 <!-- BARRE DE NAVIGUATION ECRAN ORDINATEUR -->
 <nav>
     <div class="navbar-fixed grey darken-3">
-        <a href="#modal_connexion" class="modal-trigger brand-logo right">
-            <i class="large right material-icons">account_box</i>Connexion
-        </a>
+
+        <!-- Test qui permet d'afficher ou non le logo de connexion -->
+        <?php
+        if (isset($_SESSION['info_user'])) {
+            $user = unserialize($_SESSION['info_user']);
+        ?>
+            <a class="modal-trigger brand-logo right" id='the_account'>
+                <div class='right'>
+                    <?php echo $user->get_nom . ' ' . $user->get_prenom(); ?>
+                </div>
+                <img src="<?php echo img . 'profil_pic/' . $user->get_photo(); ?>" alt="Avatar" class=" right w3-circle responsive-img" width="9%">
+            </a>
+        <?php
+        } else {
+        ?>
+
+            <a href="#modal_connexion" class="modal-trigger brand-logo right" id='the_account'>
+                <i class="large right material-icons">account_box</i>Connexion
+            </a>
+        <?php
+        }
+        ?>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="left hide-on-med-and-down">
 
@@ -24,7 +43,34 @@
     </li>
 
     <li><a href="?" class="toast-basic">Acceuil</a></li>
-    <li><a href="#modal_connexion" class="modal-trigger toast-basic"><i class="material-icons">account_box</i>Connexion</a></li>
+
+
+
+    <!---
+    Test de l'afichage du bouton CONNEXION ou DECONNEXION 
+    -->
+    <?php
+    if (!isset($_SESSION['info_user'])) {
+    ?>
+        <li><a href="#modal_connexion" class="modal-trigger toast-basic">
+                <i id="the_account" class="material-icons">account_box</i>Connexion</a>
+        </li>
+    <?php
+    }
+    ?>
+
+
+    <?php
+    if (isset($_SESSION['info_user'])) {
+    ?>
+        <li><a href="#modal_connexion" class="modal-trigger toast-basic">
+                <i id="the_account" class="material-icons">power_settings_new</i>Déconnexion</a>
+        </li>
+    <?php
+    }
+    ?>
+
+
 </ul>
 
 
@@ -38,3 +84,4 @@
         $(".dropdown-trigger").dropdown();
     });
 </script>
+</div>
