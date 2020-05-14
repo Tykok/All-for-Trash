@@ -43,3 +43,7 @@ $nbUser = theNbUser();
 
 // Appel de notre vue
 require_once(view . 'principal.php');
+
+
+// Pied de page
+require_once(include_component . 'footer.include.php');

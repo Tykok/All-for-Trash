@@ -59,22 +59,31 @@ const classF = 'class/class.';
     // On switch sur la variable page afin de rediriger notre utilisateur ou l'on souhaite
     //ICI ON A LE PREMIER AIGUILLAGE POUR LE PREMIER PARAMETRE page DE L'URL
     switch ($page) {
-        case 'detail':
-            require_once(view . 'detail.php');
+
+        case 'bdd_error':
+            /* Simple page qui ne nécessite pas un gros appel de méthodes etc, on fait donc appel à un controleur tierce
+            qui ce chargera de l'aiguiller */
+            $view = $_GET['page'];
+            require_once(control . 'aiguilleur.php');
             break;
+
 
         case 'deco':
             unset($_SESSION['user_info']); // on détruit notre SESSION
             header('Location: ?'); // On le redirige vers la page d'acceuil
             break;
 
+        case 'create_account':
+            /* Simple page qui ne nécessite pas un gros appel de méthodes etc, on fait donc appel à un controleur tierce
+            qui ce chargera de l'aiguiller */
+            $view = $_GET['page'];
+            require_once(control . 'aiguilleur.php');
+            break;
+
         default:
             require_once(control . 'principal_page.php');
             break;
     }
-
-
-    require_once(include_component . 'footer.include.php')
     ?>
 </body>
 

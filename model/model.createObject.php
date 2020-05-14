@@ -17,10 +17,7 @@ Chacune des fonction prennent en entrée le résultat d'une requête pour ensuit
  */
 function createCollectionDepot($chargerTout = false)
 {
-
-    // on instancie notre objet SELECT
-    $select = new Connexion_select;
-    $resultReq = $select->get_depotOfMonth(); // On récupére les dépôts du mois
+    $resultReq = Connexion_select::get_depotOfMonth(); // On récupére les dépôts du mois
 
     $collectionDepot = new ArrayObject;
 

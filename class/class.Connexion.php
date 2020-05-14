@@ -7,62 +7,22 @@
 
 class Connexion {
 
-	/**
-	 * 
-	 * @var string
-	 * @access private
-	 */
-	private  $bdd_name;
+	protected static function get_conexion()
+    {
 
-	/**
-	 * 
-	 * @var string
-	 * @access private
-	 */
-	private  $adress;
-
-	/**
-	 * 
-	 * @var string
-	 * @access private
-	 */
-	private  $user;
-
-	/**
-	 * 
-	 * @var string
-	 * @access private
-	 */
-	private  $mdp;
-
-
-	/**
-	 * @access protected
-	 * @param  $name 
-	 * @param  $adr 
-	 * @param  $user 
-	 * @param  $mdp 
-	 * @param  $ 
-	 */
-
-	protected  function __construct() {
-
-			$serveur = 'localhost';
+		$serveur = 'localhost';
 			$bdd = 'allfortrash';
 			$user = 'root';
 			$mdp = '';
 	
 			try {
 				// Teste pour se co à la BDD 
-				$this->connexion = new PDO("mysql:host=$serveur;dbname=$bdd;charset=utf8", $user, $mdp, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+				return new PDO("mysql:host=$serveur;dbname=$bdd;charset=utf8", $user, $mdp, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 			} catch (Exception $e) {
 				// Sinon, affiche un message d'erreur
-				throw new Exception("Aucun accès à la Base De Données");
+				header('Location: index.php?page=bdd_error');
 			}
-		
-
 	}
-
+	
 
 }
-?>

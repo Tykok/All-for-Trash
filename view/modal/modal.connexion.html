@@ -45,7 +45,7 @@ Simple redirection vers un form de création
 
     </div>
     <div class="modal-footer center">
-        <a class="waves-effect waves-light btn-flat">Créer un compte<i class="large right material-icons">create</i></a>
+        <a class="waves-effect waves-light btn-flat" href='?page=create_account'>Créer un compte<i class="large right material-icons">create</i></a>
     </div>
 </div>
 
@@ -69,7 +69,6 @@ Simple redirection vers un form de création
                 },
 
                 function(data) {
-                    console.log(data);
                     if (data != 'Wrong ;)') {
                         // Si la connexion est approuvé on recharge notre menu qui sera personnalisé avec le compte de l'utilisateur
                         $('#modal_connexion').modal('close');

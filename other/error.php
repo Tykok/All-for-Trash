@@ -1,5 +1,4 @@
 <?php
-echo 'hello';
 // test de récupération du get
 if (isset($_GET['error'])) {
     $error = $_GET['error'];
@@ -19,5 +18,9 @@ switch ($error) {
 
     case '404':
         'Error ti mâle';
+        break;
+
+    case 'bdd':
+        echo 'Aucun accès à la Base De Données';
         break;
 }

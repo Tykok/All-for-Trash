@@ -8,16 +8,14 @@
 function createTop3Users()
 {
 
-    // on instancie notre objet SELECT
-    $select = new Connexion_select;
-    $resultReq = $select->get_UsersTopOfMonth(); // On récupére les 3 Users du mois
+    $resultReq = Connexion_select::get_UsersTopOfMonth(); // On récupére les 3 Users du mois
 
     $theTop = new ArrayObject;
 
     // pour les 3 utilisateurs qu'on a récupérer (dans l'ordre) on crée notre objet UserLog
     foreach ($resultReq as $uneLigne) {
 
-        $theUser = $select->getTheUserLog($uneLigne['id_user']);
+        $theUser = Connexion_select::getTheUserLog($uneLigne['id_user']);
         $theUser = new User_log(
             $theUser['id_user'],
             $theUser['save_action'],
@@ -45,16 +43,14 @@ function createTop3Users()
 function createTop3Trash()
 {
 
-    // on instancie notre objet SELECT
-    $select = new Connexion_select;
-    $resultReq = $select->get_TrashTopOfMonth(); // On récupére les 3 Trash les plus signalés du mois
+    $resultReq = Connexion_select::get_TrashTopOfMonth(); // On récupére les 3 Trash les plus signalés du mois
 
     $theTop = new ArrayObject;
 
     // pour les 3 trash qu'on a récupérer (dans l'ordre) on crée notre objet Trash
     foreach ($resultReq as $uneLigne) {
 
-        $theTrash = $select->getTheTrash($uneLigne['trash_id']); // ici on récupére le trash en lien avec cet id
+        $theTrash = Connexion_select::getTheTrash($uneLigne['trash_id']); // ici on récupére le trash en lien avec cet id
 
         // On instancie notre objet
         $theTrash = new Trash(
@@ -80,8 +76,7 @@ function createTop3Trash()
  */
 function theNbUser()
 {
-    $select = new Connexion_select;
-    $nbUser = $select->get_countUser();
+    $nbUser = Connexion_select::get_countUser();
 
     return $nbUser['nbUser'];
 }

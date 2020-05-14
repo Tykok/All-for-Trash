@@ -3,15 +3,14 @@
 const classF = '../../../class/class.';
 require_once(classF . 'include.php');
 
-$conn = new Connexion_select; // Instance de notre objet pour la connexion à la Base De Données
 
 if (isset($_POST['pseudo']) && isset($_POST['password'])) {
 
-    if ($conn->verif_IdentifiantUser($_POST['pseudo'], $_POST['password'])) {
+    if (Connexion_select::verif_IdentifiantUser($_POST['pseudo'], $_POST['password'])) {
 
 
 
-        $result = $conn->get_InfoUser($_POST['pseudo'], $_POST['password']);
+        $result = Connexion_select::get_InfoUser($_POST['pseudo'], $_POST['password']);
         $user = new User_log(
             $result['id_user'],
             $result['save_action'],
@@ -23,6 +22,8 @@ if (isset($_POST['pseudo']) && isset($_POST['password'])) {
             $result['tel']
         );
 
+        // Démarrage d'une session (Comme on est en AJAX)
+        session_start();
         // On serialize et on récupére notre objet dans une SESSION
         $_SESSION['user_info'] = serialize($user);
 
