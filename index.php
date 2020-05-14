@@ -73,6 +73,10 @@ const classF = 'class/class.';
             header('Location: ?'); // On le redirige vers la page d'acceuil
             break;
 
+        case 'update_account':
+            require_once(control . 'update_account.php');
+            break;
+
         case 'create_account':
             /* Simple page qui ne nécessite pas un gros appel de méthodes etc, on fait donc appel à un controleur tierce
             qui ce chargera de l'aiguiller */

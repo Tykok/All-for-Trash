@@ -1,0 +1,1 @@
+Vue permettant de modifier le compte (ajout d'un téléphone, adresse, photo etc)

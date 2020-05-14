@@ -16,7 +16,7 @@ switch ($view) {
         break;
 
     case 'bdd_error':
-        $_GET['error']= 'bdd';
+        $_GET['error'] = 'bdd';
         require_once('other/error.php');
         break;
 }
